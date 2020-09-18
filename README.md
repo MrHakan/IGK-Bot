@@ -8,7 +8,7 @@ a discord bot powered with discord api
 
 - Birisi sunucuya katıldığında onu karşılar
 
-- osufag yazıldığında 100.000 kere webhookdan mesaj yazar
+- osufag yazıldığında 100 kere webhookdan mesaj yazar
 - osumal yazıldığında 1 kere webhookdan mesaj yazar
 
 # COMMANDS
