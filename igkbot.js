@@ -43,7 +43,7 @@ client.on('guildMemberAdd', member => {
     channel.send(`Welcumm, ${member}`);
 });
 client.on('message', msg => {
-    for (var i = 1; i < 100000; i++) {
+    for (var i = 1; i < 100; i++) {
 
         if (msg.content === 'osufag') {
             webhook.send(i + ' ' + "aaaaaaaa")
@@ -53,6 +53,11 @@ client.on('message', msg => {
 client.on('message', msg => {
     if (msg.content === 'osumal') {
         webhook.send('aaaaa')
+    }
+})
+client.on('message', msg => {
+    if (msg.content === 'dur') {
+        null
     }
 })
 
@@ -73,7 +78,7 @@ client.on('message', message => {
             break;
         case '?join':
             var channel = message.member.voice;
-            
+
             channel.channel.join()
                 .then(message.channel.send(`Sesli sohbete bağlandım`))
                 .then(connection => console.log(`Connected !`))
@@ -112,12 +117,11 @@ client.on('message', message => {
             case '?ban':
                 if (message.member.roles.cache.some(role => role.name === 'Admin')) {
                     const user = message.mentions.users.first();
-
                     if (user) {
                         const member = message.guild.member(user);
                         if (member) {
                             member.ban({
-                                ression: 'siktir git'
+                                ression: 'hadi bb'
                             }).then(() => {
                                 message.reply(`şu ${user.tag} denen şahsı banladım abi`)
                             })
@@ -132,13 +136,13 @@ client.on('message', message => {
                 }
                 case '?clear':
                     if (message.member.roles.cache.some(role => role.name === 'Admin')) {
-                        if (!args[1]) return message.reply('sayı belirtsene')
+                        if (!args[1]) return message.reply('sayı belirtmelisin')
                         message.channel.bulkDelete(args[1]);
                         break;
                     } else {
-                        message.reply('yarama bka sen')
+                        message.reply(':D')
                     }
     }
 
 })
-client.login('NjcxMDM1NzQ0MTQzNDA5MjE0.XxHsyQ.hwt2EO9E76aHDZNV0VKEmHDUtq8');
+client.login('token-here');
