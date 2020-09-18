@@ -1,0 +1,14 @@
+{
+  "name": "igk-bot",
+  "version": "1.0.1",
+  "description": "MrHakanın kodladığı bot",
+  "main": "igkbot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MrHakan",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
