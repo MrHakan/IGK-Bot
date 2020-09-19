@@ -8,7 +8,7 @@ a discord bot powered with discord api
 
 - Birisi sunucuya katıldığında onu karşılar
 
-- osufag yazıldığında 100.000 kere webhookdan mesaj yazar
+- osufag yazıldığında 100 kere webhookdan mesaj yazar
 - osumal yazıldığında 1 kere webhookdan mesaj yazar
 
 # COMMANDS
@@ -16,7 +16,6 @@ a discord bot powered with discord api
 - ?help / uygulanabilcek komutları listeler
 - ?join / yazan kişinin olduğu sesli sohbet kanalına girer
 - ?ben / yazan kişinin discord hesabı hakkında bilgi verir
-- ?orospucocu / gösteri
 - ?sürüm / Botun sürümünü yazar
 - ?kick / ?kick @etiketlenen_kişiyi sunucudan atar
 - ?ban / ?ban @etiketlenen_kişiyi sunucudan yasaklar
