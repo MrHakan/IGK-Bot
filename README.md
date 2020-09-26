@@ -16,6 +16,7 @@ a discord bot powered with discord api
 - ?help / uygulanabilcek komutları listeler
 - ?join / yazan kişinin olduğu sesli sohbet kanalına girer
 - ?ben / yazan kişinin discord hesabı hakkında bilgi verir
+- ?sunucu / sunucu hakkında bilgi verir
 - ?sürüm / Botun sürümünü yazar
 - ?kick / ?kick @etiketlenen_kişiyi sunucudan atar
 - ?ban / ?ban @etiketlenen_kişiyi sunucudan yasaklar
