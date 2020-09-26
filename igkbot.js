@@ -58,7 +58,6 @@ client.on('message', msg => {
     }
 })
 
-
 client.on('message', message => {
 
     let args = message.content.substring(prefix).split(" ");
@@ -68,10 +67,76 @@ client.on('message', message => {
             message.channel.send(`${message.author.tag}`);
             break;
         case '?help':
-            message.channel.send('```? sunucu / sunucu hakkında bilgi verir\n? join / olduğun sesli kanala gelirim\n? ben / discord profilin hakkında bilgi verir\n? sürüm / botun sürümünü yazar\n? kick @isim / etiketlediğini sunucudan atar\n? ban @isim / etiketlediğini sunucudan yasaklar\n? clear sayı / belirttiğin sayı kadar mesaj siler```');
+            var embed = {
+                "title": "HELP",
+                "description": "[GitHub Linki](https://github.com/MrHakan/IGK-Bot)```github linkine giderek daha fazla bilgiye ulaşabilirsiniz```**prefix = ?**",
+                "color": 16747008,
+                "thumbnail": {
+                    "url": "https://cdn.discordapp.com/avatars/671035744143409214/f54c5cb692fe2562f785a9dda28bf639.png?size=128"
+                },
+                "author": {
+                    "name": "I.G.K Bot",
+                    "url": "https://github.com/MrHakan/IGK-Bot",
+                    "icon_url": "https://cdn.discordapp.com/avatars/671035744143409214/f54c5cb692fe2562f785a9dda28bf639.png?size=128"
+                },
+                "fields": [{
+                        "name": "help",
+                        "value": "kullanılabilcek komutları listeler."
+                    },
+                    {
+                        "name": "join",
+                        "value": "Olduğun sesli sohbete girer."
+                    },
+                    {
+                        "name": "ben",
+                        "value": "Discord profilin hakkında bilgi verir."
+                    },
+                    {
+                        "name": "sunucu",
+                        "value": "Sunucu hakkında bilgi verir"
+                    },
+                    {
+                        "name": "kick <@etiketli kişi>",
+                        "value": "Etiketlenmiş kişiyi sunucudan atar"
+                    },
+                    {
+                        "name": "ban <@etiketli kişi>",
+                        "value": "Etiketlenmiş kişiyi sunucudan yasaklar"
+                    },
+                    {
+                        "name": "clear <sayı>",
+                        "value": "Belirtilen sayı kadar mesaj siler."
+                    }
+                ]
+            };
+            message.channel.send({
+                embed
+            });
             break;
         case '?sunucu':
-            message.channel.send(`${message.guild.iconURL({format: "png", dynamic: true })}\n**Sunucu adı:** ${message.guild.name}\n**Üye Sayısı:** ${message.guild.memberCount}`);
+            var embed = {
+                "color": 16747008,
+                "thumbnail": {
+                    "url": `${message.guild.iconURL({format: "png", dynamic: true })}`
+                },
+                "author": {
+                    "name": `${message.guild.name}`,
+                    "url": `${message.guild.iconURL({format: "png", dynamic: true })}`,
+                    "icon_url": `${message.guild.iconURL({format: "png", dynamic: true })}`
+                },
+                "fields": [{
+                        "name": "SUNUCUNUN KURULDUĞU TARİH",
+                        "value": `${message.guild.createdAt}`
+                    },
+                    {
+                        "name": "ÜYE SAYISI",
+                        "value": `${message.guild.memberCount}`
+                    }
+                ]
+            }
+            message.channel.send({
+                embed
+            });
             break;
         case '?join':
             var channel = message.member.voice;
@@ -81,7 +146,29 @@ client.on('message', message => {
                 .catch(console.error);
             break;
         case '?ben':
-            message.channel.send(`${message.author.displayAvatarURL({ format: "png", dynamic: true })}\n**Kullanıcı adın:** ${message.author.username}\n**Hesabının kuruluş tarihi:** ${message.author.createdAt}\n**Discord ID:** ${message.author.id}`);
+            var embed = {
+                "color": 16747008,
+                "thumbnail": {
+                    "url": `${message.author.displayAvatarURL({ format: "png", dynamic: true })}`
+                },
+                "author": {
+                    "name": `${message.author.username}`,
+                    "url": `${message.author.displayAvatarURL({ format: "png", dynamic: true })}`,
+                    "icon_url": `${message.author.displayAvatarURL({ format: "png", dynamic: true })}`
+                },
+                "fields": [{
+                        "name": "HESABIN KURULDUĞU TARİH",
+                        "value": `${message.author.createdAt}`
+                    },
+                    {
+                        "name": "DISCORD ID",
+                        "value": `${message.author.id}`
+                    }
+                ]
+            };
+            message.channel.send({
+                embed
+            });
             break;
         case '?sürüm':
             message.channel.send(`**Sürüm: 1.2.0**`)
@@ -136,4 +223,4 @@ client.on('message', message => {
     }
 
 })
-client.login('token-here');
+client.login('token');
