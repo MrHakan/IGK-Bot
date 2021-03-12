@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
+const config = require('./config.json');
 
-const client = new Discord.Client();
 const webhook = new Discord.WebhookClient('webhook-id', 'webhook-token');
 
-const prefix = '?';
+const client = new Discord.Client();
 
 client.once('ready', () => {
     console.log(`Bot aktif!\n${client.user.tag}`);
@@ -60,7 +60,7 @@ client.on('message', msg => {
 
 client.on('message', message => {
 
-    let args = message.content.substring(prefix).split(" ");
+    let args = message.content.substring("?").split(" ");
 
     switch (args[0]) {
         case '?test':
@@ -173,37 +173,29 @@ client.on('message', message => {
         case '?sürüm':
             message.channel.send(`**Sürüm: 1.2.0**`)
             break;
-        case '?kick':
-            if (message.member.roles.cache.some(role => role.name === 'Admin')) {
+        case '?spam':
+            if (message.member.roles.cache.some(role => role.name === 'Aadmin')) {
                 const user = message.mentions.users.first();
                 if (user) {
                     const member = message.guild.member(user);
-                    if (member) {
-                        member.kick('kicklenmeni istediler kickledik').then(() => {
-                            message.reply(`${user.tag} denen şahısı kickledim abi.`);
-                        }).catch(err => {
-                            message.reply('bu adamı kickleyemiyorum');
-                            console.log(err);
-                        });
-                    } else {
-                        message.reply("böyle biri yok")
-                    }
-                } else {
-                    message.reply('birisini etiketlemen lazım abi');
+                    for (var i = 1; i < 100; i++)
+                        if (member) {
+                            message.send(i + ' ' + "aaaaaaaa")
+                        }
                 }
-                break;
             }
-            case '?ban':
+            case '?kick':
                 if (message.member.roles.cache.some(role => role.name === 'Admin')) {
                     const user = message.mentions.users.first();
                     if (user) {
                         const member = message.guild.member(user);
                         if (member) {
-                            member.ban({
-                                ression: 'hadi bb'
-                            }).then(() => {
-                                message.reply(`şu ${user.tag} denen şahsı banladım abi`)
-                            })
+                            member.kick('kicklenmeni istediler kickledik').then(() => {
+                                message.reply(`${user.tag} denen şahısı kickledim abi.`);
+                            }).catch(err => {
+                                message.reply('bu adamı kickleyemiyorum');
+                                console.log(err);
+                            });
                         } else {
                             message.reply("böyle biri yok")
                         }
@@ -212,15 +204,34 @@ client.on('message', message => {
                     }
                     break;
                 }
-                case '?clear':
+                case '?ban':
                     if (message.member.roles.cache.some(role => role.name === 'Admin')) {
-                        if (!args[1]) return message.reply('sayı belirtmelisin')
-                        message.channel.bulkDelete(args[1]);
+                        const user = message.mentions.users.first();
+                        if (user) {
+                            const member = message.guild.member(user);
+                            if (member) {
+                                member.ban({
+                                    ression: 'hadi bb'
+                                }).then(() => {
+                                    message.reply(`şu ${user.tag} denen şahsı banladım abi`)
+                                })
+                            } else {
+                                message.reply("böyle biri yok")
+                            }
+                        } else {
+                            message.reply('birisini etiketlemen lazım abi');
+                        }
                         break;
-                    } else {
-                        message.reply(':D')
                     }
+                    case '?clear':
+                        if (message.member.roles.cache.some(role => role.name === 'Admin')) {
+                            if (!args[1]) return message.reply('sayı belirtmelisin')
+                            message.channel.bulkDelete(args[1]);
+                            break;
+                        } else {
+                            message.reply(':D')
+                        }
     }
 
 })
-client.login('token');
+client.login(config.token);
